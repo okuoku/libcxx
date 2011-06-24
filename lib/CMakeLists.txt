@@ -11,6 +11,8 @@ if (MSVC_IDE OR XCODE)
   endif()
 endif()
 
+add_definitions(-D__ISO_C_VISIBLE=1999 -D__LONG_LONG_SUPPORTED)
+
 if (LIBCXX_ENABLE_SHARED)
   add_library(cxx SHARED
     ${sources}

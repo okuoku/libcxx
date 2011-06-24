@@ -36,7 +36,7 @@ option(LIBCXX_ENABLE_RTTI "Use run time type information." ON)
 option(LIBCXX_ENABLE_ASSERTIONS "Enable assertions independent of build mode." ON)
 option(LIBCXX_ENABLE_PEDANTIC "Compile with pedantic enabled." ON)
 option(LIBCXX_ENABLE_WERROR "Fail and stop if a warning is triggered." OFF)
-option(LIBCXX_ENABLE_CXX0X "Enable -std=c++0x and use of c++0x language features if the compiler supports it." ON)
+option(LIBCXX_ENABLE_CXX0X "Enable -std=c++0x and use of c++0x language features if the compiler supports it." ON) 
 option(LIBCXX_ENABLE_SHARED "Build libc++ as a shared library." ON)
 
 #===============================================================================

@@ -8,6 +8,13 @@
 //===----------------------------------------------------------------------===//
 
 #include <stdlib.h>
+#include "new"
+namespace std {
+    void __throw_bad_alloc() { ::abort(); } // unimplemented
+};
+
+#if 0
+#include <stdlib.h>
 
 #include "new"
 
@@ -177,3 +184,4 @@ __throw_bad_alloc()
 }
 
 }  // std
+#endif

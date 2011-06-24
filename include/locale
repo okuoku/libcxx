@@ -11,6 +11,8 @@
 #ifndef _LIBCPP_LOCALE
 #define _LIBCPP_LOCALE
 
+// FIXME:
+
 /*
     locale synopsis
 
@@ -748,7 +750,8 @@ __num_get_signed_integral(const char* __a, const char* __a_end,
         int __save_errno = errno;
         errno = 0;
         char *__p2;
-        long long __ll = strtoll_l(__a, &__p2, __base, 0);
+        //long long __ll = strtoll_l(__a, &__p2, __base, 0);
+        long long __ll = strtoll(__a, &__p2, __base);
         int __current_errno = errno;
         if (__current_errno == 0)
             errno = __save_errno;
@@ -788,7 +791,8 @@ __num_get_unsigned_integral(const char* __a, const char* __a_end,
         int __save_errno = errno;
         errno = 0;
         char *__p2;
-        unsigned long long __ll = strtoull_l(__a, &__p2, __base, 0);
+        //unsigned long long __ll = strtoull_l(__a, &__p2, __base, 0);
+        unsigned long long __ll = strtoull(__a, &__p2, __base);
         int __current_errno = errno;
         if (__current_errno == 0)
             errno = __save_errno;
@@ -816,7 +820,8 @@ __num_get_float(const char* __a, const char* __a_end, ios_base::iostate& __err)
     if (__a != __a_end)
     {
         char *__p2;
-        long double __ld = strtold_l(__a, &__p2, 0);
+        //long double __ld = strtold_l(__a, &__p2, 0);
+        long double __ld = strtold(__a, &__p2);
         if (__p2 != __a_end)
         {
             __err = ios_base::failbit;

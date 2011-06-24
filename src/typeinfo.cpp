@@ -6,6 +6,8 @@
 // Source Licenses. See LICENSE.TXT for details.
 //
 //===----------------------------------------------------------------------===//
+
+#if 0
 #include <stdlib.h>
 #if __APPLE__
 #include <cxxabi.h>
@@ -48,3 +50,4 @@ std::bad_typeid::what() const _NOEXCEPT
   void __cxxabiv1::__cxa_bad_cast() { throw std::bad_cast(); }
 #endif
 
+#endif

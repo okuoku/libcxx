@@ -19,7 +19,10 @@
 #include <cstdint>
 #include <cctype>
 #include <locale.h>
-#include <xlocale.h>
+//#include <xlocale.h>
+
+// FIXME: implement xlocale
+typedef int locale_t;
 
 #pragma GCC system_header
 
@@ -38,6 +41,25 @@ public:
     class id;
 
     typedef int category;
+#define strftime_l(a,b,c,d,l) strftime(a,b,c,d)
+#define toupper_l(x,l) toupper(x)
+#define tolower_l(x,l) tolower(x)
+#define towupper_l(x,l) towupper(x)
+#define towlower_l(x,l) towlower(x)
+#define iswctype_l(x,y,l) iswctype(x,y)
+#define wcsxfrm_l(x,y,z,l) wcsxfrm(x,y,z)
+#define strxfrm_l(x,y,z,l) strxfrm(x,y,z)
+#define wcscoll_l(x,y,l) wcscoll(x,y)
+#define strcoll_l(x,y,l) strcoll(x,y)
+#define newlocale(x,y,z) (locale_t)0
+#define freelocale(x) (void)0
+#define LC_ALL_MASK -1
+#define LC_COLLATE_MASK -1
+#define LC_CTYPE_MASK -1
+#define LC_MONETARY_MASK -1
+#define LC_NUMERIC_MASK -1
+#define LC_TIME_MASK -1
+#define LC_MESSAGES_MASK -1
     static const category // values assigned here are for exposition only
         none     = 0,
         collate  = LC_COLLATE_MASK,
@@ -304,7 +326,7 @@ class _LIBCPP_VISIBLE ctype_base
 public:
     typedef __uint32_t mask;
 
-#if __APPLE__
+#if 1||__APPLE__
     static const mask space  = _CTYPE_S;
     static const mask print  = _CTYPE_R;
     static const mask cntrl  = _CTYPE_C;

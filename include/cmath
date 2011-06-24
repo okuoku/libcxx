@@ -11,6 +11,31 @@
 #ifndef _LIBCPP_CMATH
 #define _LIBCPP_CMATH
 
+// FIXME: implement "long double" versions of these math functions
+
+#define coshl cosh
+#define expl exp
+#define logl log
+#define log10l log
+#define powl pow
+#define sinhl sinh
+#define tanhl tanh
+#define acoshl acosh
+#define asinhl asinh
+#define atanhl atanh
+#define cbrtl cbrt
+#define erfl erf
+#define erfcl erfc
+#define expm1l expm1
+#define lgammal lgamma
+#define tgammal tgamma
+#define log1pl log1p
+// NB: log2 is missing from FreeBSD libc.
+// see below log2 implementation
+#define log2f(x) (logf(x)/logf(2)) // silly
+#define xlog2l(x) (logf(x)/logf(2)) // silly again
+
+
 /*
     cmath synopsis
 
@@ -1280,16 +1305,23 @@ log1p(_A1 __x) {return log1p((double)__x);}
 
 // log2
 
+#if 0
 using ::log2;
 using ::log2f;
+#endif
 
 inline _LIBCPP_INLINE_VISIBILITY float       log2(float __x)       {return log2f(__x);}
-inline _LIBCPP_INLINE_VISIBILITY long double log2(long double __x) {return log2l(__x);}
+//inline _LIBCPP_INLINE_VISIBILITY long double log2(long double __x) {return log2l(__x);}
+inline _LIBCPP_INLINE_VISIBILITY long double log2(long double __x) {return xlog2l(__x);}
 
+//template <class _A1>
+//inline _LIBCPP_INLINE_VISIBILITY
+//typename enable_if<is_integral<_A1>::value, double>::type
+//log2(_A1 __x) {return log2((double)__x);}
 template <class _A1>
 inline _LIBCPP_INLINE_VISIBILITY
 typename enable_if<is_integral<_A1>::value, double>::type
-log2(_A1 __x) {return log2((double)__x);}
+log2(_A1 __x) {return log2((long double)__x);}
 
 // logb
 
@@ -1552,7 +1584,7 @@ using ::lgammal;
 using ::llrintl;
 using ::llroundl;
 using ::log1pl;
-using ::log2l;
+//using ::log2l;
 using ::logbl;
 using ::lrintl;
 using ::lroundl;

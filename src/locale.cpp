@@ -347,7 +347,10 @@ locale::__imp::install(facet* f, long id)
     f->__add_shared();
     unique_ptr<facet, release> hold(f);
     if (id >= facets_.size())
+        ::abort(); // unimplemented
+#if 0
         facets_.resize(id+1);
+#endif
     if (facets_[id])
         facets_[id]->__release_shared();
     facets_[id] = hold.release();
@@ -5642,3 +5645,4 @@ template class codecvt_byname<char32_t, char, mbstate_t>;
 template class __vector_base_common<true>;
 
 _LIBCPP_END_NAMESPACE_STD
+

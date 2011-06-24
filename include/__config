@@ -11,6 +11,8 @@
 #ifndef _LIBCPP_CONFIG
 #define _LIBCPP_CONFIG
 
+#define __LONG_LONG_SUPPORTED 1
+
 #pragma GCC system_header
 
 #define _LIBCPP_VERSION 1000

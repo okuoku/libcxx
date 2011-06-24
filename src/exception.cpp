@@ -10,6 +10,42 @@
 
 #include "exception"
 
+// FIXME: stub
+
+std::exception_ptr std::current_exception()
+{
+    #warning exception_ptr not yet implemented
+    ::abort();
+}
+
+void std::rethrow_exception(exception_ptr p)
+{
+    #warning exception_ptr not yet implemented
+    ::abort();
+}
+
+namespace std {
+exception_ptr::~exception_ptr()
+{
+    #warning exception_ptr not yet implemented
+    ::abort();
+}
+
+exception_ptr::exception_ptr(const exception_ptr& other)
+    : __ptr_(other.__ptr_)
+{
+    #warning exception_ptr not yet implemented
+    ::abort();
+}
+
+exception_ptr& exception_ptr::operator=(const exception_ptr& other)
+{
+    #warning exception_ptr not yet implemented
+    ::abort();
+}
+}
+
+#if 0
 #if __APPLE__
   #include <cxxabi.h>
   using namespace __cxxabiv1;
@@ -194,3 +230,4 @@ void std::rethrow_exception(exception_ptr p)
     ::abort();
 #endif  // __APPLE__
 }
+#endif
